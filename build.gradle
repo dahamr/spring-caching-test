@@ -28,7 +28,8 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-cache")
     //compile("org.springframework.boot:spring-boot-starter-web")
     compile("net.sf.ehcache:ehcache")
+    compile("com.google.guava:guava:18.0")
     
-    //testCompile ("org.springframework.boot:spring-boot-starter-test")
+    testCompile ("org.springframework.boot:spring-boot-starter-test")
 }
 

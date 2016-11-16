@@ -10,7 +10,7 @@ public class CustomKeyGenerator implements KeyGenerator {
     @Override
     public Object generate(Object o, Method method, Object... objects) {
         StringBuilder sb = new StringBuilder();
-        sb.append("SAS-");
+        sb.append("Custom-");
         for (Object obj : objects) {
             sb.append(obj.toString());
         }

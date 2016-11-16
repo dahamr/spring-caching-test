@@ -4,6 +4,7 @@ import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.cache.ehcache.EhCacheCacheManager;
 import org.springframework.cache.ehcache.EhCacheManagerFactoryBean;
+import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
@@ -13,7 +14,7 @@ public class EhCacheConfig extends CachingConfigurerSupport {
     @Bean
     public EhCacheManagerFactoryBean ehCacheManagerFactoryBean() {
         EhCacheManagerFactoryBean ehCacheManagerFactoryBean = new EhCacheManagerFactoryBean();
-        ehCacheManagerFactoryBean.setConfigLocation(new ClassPathResource("ehcache.xml"));
+        ehCacheManagerFactoryBean.setConfigLocation(new ClassPathResource("myEhcache.xml"));
         ehCacheManagerFactoryBean.setShared(true);
         return ehCacheManagerFactoryBean;
     }
@@ -26,8 +27,8 @@ public class EhCacheConfig extends CachingConfigurerSupport {
         return ehCacheCacheManager;
     }
 
-//    @Override
-//    public KeyGenerator keyGenerator() {
-//        return new CustomKeyGenerator();
-//    }
+    @Override
+    public KeyGenerator keyGenerator() {
+        return new CustomKeyGenerator();
+    }
 }
