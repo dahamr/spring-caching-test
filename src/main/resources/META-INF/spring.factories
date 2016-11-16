@@ -1,0 +1,4 @@
+#AutoConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+common.library.TenantConfiguration,\
+common.library.TenantCacheConfig

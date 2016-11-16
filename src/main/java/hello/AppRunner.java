@@ -14,6 +14,7 @@ import org.springframework.cache.guava.GuavaCache;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
+import common.library.TenantCache;
 import net.sf.ehcache.Ehcache;
 import net.sf.ehcache.Element;
 
@@ -45,6 +46,9 @@ public class AppRunner implements CommandLineRunner {
         try {
             CacheManager cacheManager = (CacheManager) appContext.getBean("cacheManager");
             Cache cache = cacheManager.getCache(name);
+            if (cache instanceof TenantCache) {
+                cache=((TenantCache)cache).getDelegate();
+            }
 
             if (cache instanceof GuavaCache) {
                 logger.info(".... dumping google cache");
